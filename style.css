@@ -1,0 +1,824 @@
+/* ===================================================
+   GENERAL STYLES & RESET
+   =================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* နှိပ်လိုက်ရင် ငြင်သာစွာဆင်းမယ့် စနစ် */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    overflow-x: hidden;
+}
+
+/* ===================================================
+   ANIMATIONS (အလှုပ်အရွ ဖန်တီးချက်များ)
+   =================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* ===================================================
+   NAVIGATION BAR STYLING
+   =================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* နောက်ခံကို ဝါးဝါးလေးဖြစ်စေတဲ့ Glassmorphism */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 26px;
+}
+
+.logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1b4332; /* Rich Forest Green */
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #1b4332;
+}
+
+/* အောက်က အလင်းတန်းလေး မျောဝင်မယ့် Effect */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #d4a373; /* Gold/Bronze Color */
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after, .nav-item.active::after {
+    width: 100%;
+}
+
+/* ===================================================
+   HERO SECTION STYLING
+   =================================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    /* ဘားအံ ဇွဲကပင်တောင်အလှပုံကို High Quality ချိတ်ထားပါတယ် */
+    background: url('a.jpg') no-repeat center center/cover;
+}
+
+/* ပုံပေါ်မှာ စာသားကြည်လင်အောင် မှောင်ပေးတဲ့ အရောင်အလွှာ */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    color: #ffffff;
+    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; /* Pro Animation */
+}
+
+.hero-tag {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #d4a373; /* Gold */
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hero-title .highlight {
+    color: #d4a373;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #f1f3f5;
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+/* BUTTONS STYLING */
+.hero-action-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 14px 32px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px; /* ခေတ်မီတဲ့ Sharp-smooth border */
+    transition: all 0.3s ease;
+}
+
+.btn-filled {
+    background-color: #1b4332;
+    color: white;
+    border: 1px solid #1b4332;
+    animation: pulseEffect 2.5s infinite ease-in-out; /* စွဲဆောင်မှုရှိတဲ့ တုန်ခါမှု */
+}
+
+.btn-filled:hover {
+    background-color: #2d6a4f;
+    border-color: #2d6a4f;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(27, 67, 50, 0.3);
+}
+
+.btn-outline {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+}
+
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #1b4332;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* ===================================================
+   MOBILE RESPONSIVE (ဖုန်းအတွက်တစ်ခါတည်းညှိထားခြင်း)
+   =================================================== */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 15px 5%;
+    }
+    .logo-text { font-size: 22px; }
+    .nav-menu { gap: 15px; }
+    .nav-item { font-size: 13px; }
+
+    .hero-section {
+        padding: 0 5%;
+        padding-top: 100px;
+    }
+    .hero-title {
+        font-size: 30px;
+    }
+    .hero-subtitle {
+        font-size: 14px;
+    }
+    .hero-action-buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    .btn {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* ===================================================
+   ABOUT SECTION STYLING (Professional Grid Layout)
+   =================================================== */
+.about-section {
+    padding: 100px 8%;
+    background-color: #ffffff; /* မျက်စိရှင်းစေမယ့် အဖြူရောင်နောက်ခံ */
+    position: relative;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ဘယ်ဘက် စာသားအပိုင်း */
+.about-text-block {
+    flex: 1;
+}
+
+.section-tag {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1b4332; /* Forest Green */
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.section-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+/* စာသားကို ပို Pro ဆန်အောင် အရောင်နှစ်ရောင်စပ် (Gradient) သုံးထားခြင်း */
+.gradient-text {
+    background: linear-gradient(45deg, #1b4332, #d4a373);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555555;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.about-link-btn {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1b4332;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.about-link-btn:hover {
+    color: #d4a373;
+    padding-left: 5px; /* Mouse တင်ရင် မြားလေး ရှေ့တိုးသွားမယ့် Effect */
+}
+
+/* ညာဘက် ကတ် ၄ ခု အကွက်ချစနစ် (CSS Grid) */
+.about-features-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ဘေးတိုက် ၂ ကွက်စီပြမယ် */
+    gap: 25px;
+}
+
+/* ကတ်တစ်ခုချင်းစီရဲ့ Professional Modern Design */
+.feature-card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Mouse တင်လိုက်ရင် အပေါ်ကို အသာလေးကြွတက်လာပြီး အရိပ်ထွက်လာမယ့် Shadow Effect */
+.feature-card:hover {
+    transform: translateY(-8px);
+    background-color: #ffffff;
+    border-color: rgba(27, 67, 50, 0.2);
+    box-shadow: 0 15px 30px rgba(27, 67, 50, 0.08);
+}
+
+.card-icon-box {
+    font-size: 30px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    color: #1b4332;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* ===================================================
+   ABOUT MOBILE RESPONSIVE (ဖုန်းအတွက် ညှိချက်)
+   =================================================== */
+@media screen and (max-width: 992px) {
+    .about-container {
+        flex-direction: column; /* ဖုန်းပေါ်မှာဆိုရင် အပေါ်အောက်စီသွားမယ် */
+        gap: 40px;
+    }
+    .section-title {
+        font-size: 28px;
+    }
+    .about-features-grid {
+        grid-template-columns: 1fr; /* ဖုန်းပေါ်မှာ ကတ်တွေကို တစ်တန်းတည်းပြမယ် */
+        width: 100%;
+    }
+}
+
+/* ===================================================
+   DESTINATIONS SECTION STYLING (Premium Grid Cards)
+   =================================================== */
+.destinations-section {
+    padding: 100px 8%;
+    background-color: #f8f9fa; /* ကတ်တွေ ထင်ရှားအောင် အောက်ခံကို မီးခိုးနုရောင် သုံးထားပါတယ် */
+}
+
+/* ခေါင်းစဉ်ပိုင်းပုံစံညှိခြင်း */
+.container-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.section-subtitle {
+    font-size: 15px;
+    color: #666666;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* ကတ်များ စီမံခန့်ခွဲသည့် အကွက်ချစနစ် (Grid) */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ဘေးတိုက် ၂ ကွက်စီ အညီအမျှပြမယ် */
+    gap: 35px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ကတ်တစ်ခုချင်းစီရဲ့ အပြင်အဆင် */
+.destination-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden; /* ပုံတွေ ဘောင်ကျော်မထွက်အောင် ထိန်းထားခြင်း */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    height: 380px; /* ကတ်အမြင့် */
+}
+
+.dest-img-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.dest-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* ပုံကြီးလာမည့် စနစ် */
+}
+
+/* Mouse တင်လိုက်ရင် အပေါ်က ဖုံးမယ့် မှောင်မှောင် အရောင်အလွှာ (Overlay) */
+.dest-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0.2) 100%);
+    opacity: 0; /* ပုံမှန်ဆိုရင် ဖျောက်ထားမယ် */
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end; /* စာသားတွေကို ကတ်ရဲ့ အောက်ခြေမှာ ကပ်ပြမယ် */
+    padding: 35px;
+}
+
+/* စာသားများနှင့် အချက်အလက်များပုံစံ */
+.dest-info {
+    transform: translateY(20px); /* စာသားကို အောက်နည်းနည်း ချထားမယ် */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    color: #ffffff;
+}
+
+.dest-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dest-info p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin-bottom: 18px;
+}
+
+.explore-tag {
+    background-color: rgba(212, 163, 115, 0.2); /* ရွှေဝါရောင် ဖောက်ထွင်းလွှာ */
+    border: 1px solid #d4a373;
+    color: #d4a373;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* ===================================================
+   HOVER EFFECTS (MUSE တင်လျှင် အလုပ်လုပ်မည့် စနစ်)
+   =================================================== */
+.destination-card:hover .dest-img-box img {
+    transform: scale(1.1); /* ပုံက ဖြည်းဖြည်းချင်း ကြီးလာမယ် */
+}
+
+.destination-card:hover .dest-overlay {
+    opacity: 1; /* မှောင်တက်လာမယ့် အလွှာ ပေါ်လာမယ် */
+}
+
+.destination-card:hover .dest-info {
+    transform: translateY(0); /* စာသားတွေက အောက်ကနေ အပေါ်ကို ဆလိုက်ဒါလို တက်လာမယ် */
+}
+
+/* ===================================================
+   DESTINATIONS MOBILE RESPONSIVE (ဖုန်းအတွက် ညှိချက်)
+   =================================================== */
+@media screen and (max-width: 992px) {
+    .destinations-grid {
+        grid-template-columns: 1fr; /* ဖုန်းပေါ်မှာ တစ်ကတ်ချင်းစီ အပေါ်အောက်စီပြမယ် */
+        gap: 25px;
+    }
+    .destination-card {
+        height: 320px; /* ဖုန်းပေါ်မှာ အမြင့်နည်းနည်းလျှော့မယ် */
+    }
+    .dest-overlay {
+        opacity: 1; /* ဖုန်းမှာ Hover မရှိလို့ စာသားတွေကို တစ်ခါတည်း တန်းပြထားမယ် */
+        padding: 20px;
+    }
+    .dest-info {
+        transform: translateY(0);
+    }
+    .dest-info h3 { font-size: 20px; }
+    .dest-info p { font-size: 13px; }
+}
+
+/* ===================================================
+   GALLERY SECTION STYLING (Modern Pinterest Layout)
+   =================================================== */
+.gallery-section {
+    padding: 100px 8%;
+    background-color: #ffffff;
+}
+
+/* Gallery ရဲ့ အကွက်ချစနစ် (CSS Grid Grid) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: 240px; /* အခြေခံအကွက်အမြင့် */
+    grid-auto-flow: dense; /* အကွက်လွတ်မကျန်အောင် အလိုအလျောက်ဖြည့်မည့်စနစ် */
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ပုံစံအမျိုးမျိုးဖြစ်အောင် ကတ်အရွယ်အစား ခွဲထုတ်ခြင်း */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* ပုံအရှည် (Vertical Long ပုံအတွက်) */
+.gallery-item.item-tall {
+    grid-row: span 2; /* အမြင့် ၂ ကွက်စာ ယူမယ် */
+}
+
+/* ပုံအကျယ် (Horizontal Wide ပုံအတွက်) */
+.gallery-item.item-wide {
+    grid-column: span 2; /* အကျယ် ၂ ကွက်စာ ယူမယ် */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ပုံပေါ်က စာသားအဖုံးလွှာ (Hover Text Overlay) */
+.gallery-hover-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    padding: 25px 20px;
+    color: white;
+    opacity: 0; /* ပုံမှန်ဆိုရင် ဖျောက်ထားမယ် */
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.gallery-hover-text h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.gallery-hover-text p {
+    font-size: 13px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+/* ===================================================
+   GALLERY HOVER EFFECTS
+   =================================================== */
+.gallery-item:hover img {
+    transform: scale(1.08); /* Mouse တင်ရင် ပုံလေး နည်းနည်းကြီးလာမယ် */
+}
+
+.gallery-item:hover .gallery-hover-text {
+    opacity: 1; /* စာသားတွေ လင်းပွင့်လာမယ် */
+    transform: translateY(0);
+}
+
+/* ===================================================
+   GALLERY MOBILE RESPONSIVE
+   =================================================== */
+@media screen and (max-width: 768px) {
+    .gallery-grid {
+        grid-auto-rows: 200px; /* ဖုန်းပေါ်မှာ အကွက်အမြင့် နည်းနည်းလျှော့မယ် */
+        gap: 15px;
+    }
+    .gallery-item.item-wide {
+        grid-column: span 1; /* ဖုန်းပေါ်မှာ အကျယ်ကြီးတွေ မပြတော့ဘဲ အညီအမျှပဲ ပြမယ် */
+    }
+    .gallery-hover-text {
+        opacity: 1; /* ဖုန်းမှာ Hover မရှိလို့ စာသားတန်းပြထားမယ် */
+        transform: translateY(0);
+        padding: 15px 10px;
+    }
+    .gallery-hover-text h4 { font-size: 16px; }
+    .gallery-hover-text p { font-size: 12px; }
+}
+
+/* ===================================================
+   CULTURE SECTION STYLING (Zig-Zag Modern Layout)
+   =================================================== */
+.culture-section {
+    padding: 100px 8%;
+    background-color: #f8f9fa; /* ပြခန်းနဲ့ မတူအောင် မီးခိုးနုရောင် ပြန်သုံးထားပါတယ် */
+}
+
+.culture-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* ကတ်အပေါ်အောက် အကွာအဝေး */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ဇစ်ဇတ် ပုံစံ Flexbox စနစ် */
+.culture-block {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* ဒုတိယကတ်ကို ပုံနှင့်စာ ပြောင်းပြန်လှန်မည့်စနစ် (Zig-Zag) */
+.culture-block.block-reverse {
+    flex-direction: row-reverse;
+}
+
+/* ပုံပြသမည့်အပိုင်း */
+.culture-img-placeholder {
+    flex: 1;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.culture-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.culture-block:hover .culture-img-placeholder img {
+    transform: scale(1.05); /* Mouse တင်ရင် ပုံလေး နည်းနည်း ကြွလာမယ် */
+}
+
+/* စာသားအပိုင်း */
+.culture-text-content {
+    flex: 1.2;
+}
+
+.culture-mini-tag {
+    font-size: 12px;
+    font-weight: 600;
+    color: #d4a373; /* ရွှေဝါရောင် */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.culture-text-content h3 {
+    font-size: 24px;
+    color: #1b4332;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.culture-text-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #666666;
+    text-align: justify;
+}
+
+/* ===================================================
+   CULTURE MOBILE RESPONSIVE (ဖုန်းအတွက် ညှိချက်)
+   =================================================== */
+@media screen and (max-width: 992px) {
+    .culture-block, .culture-block.block-reverse {
+        flex-direction: column; /* ဖုန်းပေါ်မှာ ပုံရောစာပါ အပေါ်အောက် တန်းစီမယ် */
+        gap: 25px;
+        padding: 20px;
+    }
+    .culture-img-placeholder {
+        width: 100%;
+        height: 240px; /* ဖုန်းပေါ်မှာ ပုံအမြင့် နည်းနည်းလျှော့မယ် */
+    }
+    .culture-text-content h3 {
+        font-size: 20px;
+    }
+}
+
+/* ===================================================
+   FOOTER SECTION STYLING (Elegant Dark Brown Aesthetic)
+   =================================================== */
+.main-footer {
+    background-color: #1e140f; /* ညိုမှောင်တဲ့ ကော်ဖီရင့်ရောင် */
+    color: #f4efe9; /* အဖြူရောင်မဟုတ်ဘဲ ကရင်မ်ရောင်နုနု */
+    padding: 60px 8% 20px 8%;
+    font-family: sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(244, 239, 233, 0.1); /* လိုင်းအပါးလေးတားမယ် */
+    padding-bottom: 40px;
+}
+
+/* Footer ကဏ္ဍတစ်ခုချင်းစီ အကျယ်အဝန်း */
+.footer-info { flex: 1.5; min-width: 250px; }
+.footer-links { flex: 1; min-width: 150px; }
+.footer-contact { flex: 1; min-width: 220px; }
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d4a373; /* ရွှေဝါရောင်သန်းသော Brown */
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.footer-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #c5bbae;
+}
+
+.main-footer h4 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    position: relative;
+}
+
+/* ခေါင်းစဉ်အောက်က လိုင်းတိုလေး */
+.main-footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 35px;
+    height: 2px;
+    background-color: #d4a373;
+}
+
+/* Quick Links စာရင်းပုံစံသွင်းခြင်း */
+.footer-links ul { list-style: none; padding: 0; }
+.footer-links ul li { margin-bottom: 12px; }
+.footer-links ul li a {
+    color: #c5bbae;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #d4a373;
+    padding-left: 5px; /* Mouse တင်ရင် စာသားလေး ညာဘက်ကို နည်းနည်းတိုးသွားမယ် */
+}
+
+.footer-contact p {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #c5bbae;
+}
+
+/* Copyright အပိုင်း */
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 13px;
+    color: #8c8071;
+}
+
+/* ===================================================
+   FOOTER MOBILE RESPONSIVE
+   =================================================== */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* ဖုန်းမှာ အပေါ်အောက် အကုန်စီသွားမယ် */
+        gap: 30px;
+    }
+    .main-footer { padding: 40px 5% 20px 5%; }
+}
+
+/* ===================================================
+   CONTACT US - PRO CLICKABLE INTERACTION
+   =================================================== */
+.footer-click-item {
+    color: #c5bbae !important; /* လက်ရှိ လှနေတဲ့ စာသားအရောင်အတိုင်း ပုံသေ သတ်မှတ်ခြင်း */
+    text-decoration: none !important; /* အောက်က လိုင်းတားတာကို ဖျောက်ခြင်း */
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+/* Mouse တင်လိုက်တဲ့အခါကျမှ ရွှေဝါရောင်သန်းပြီး လင်းလာစေရန် */
+.footer-click-item:hover {
+    color: #d4a373 !important; /* Logo အရောင်အတိုင်း လှလှပပ တောက်လာပါမယ် */
+}
